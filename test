@@ -1,0 +1,2050 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlueSky Hotels - เว็บจองโรงแรมออนไลน์</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1a73e8;
+            --secondary-blue: #4285f4;
+            --accent-blue: #8ab4f8;
+            --light-blue: #e8f0fe;
+            --dark-blue: #0d47a1;
+            --white: #ffffff;
+            --gray-light: #f8f9fa;
+            --gray: #5f6368;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --gradient: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--white);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        header {
+            background: var(--gradient);
+            color: var(--white);
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo i {
+            font-size: 2rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--accent-blue);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-blue);
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .btn {
+            padding: 0.5rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 0.95rem;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+        
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--primary-blue);
+            transform: translateY(-2px);
+        }
+        
+        .btn-primary {
+            background: var(--white);
+            color: var(--primary-blue);
+        }
+        
+        .btn-primary:hover {
+            background: var(--light-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 115, 232, 0.85), rgba(13, 71, 161, 0.85)), url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 5rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+        
+        /* Search Form */
+        .search-form {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            margin-top: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            flex: 1;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark-blue);
+            font-size: 0.9rem;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.85rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+            outline: none;
+        }
+        
+        .search-btn {
+            background: var(--gradient);
+            color: var(--white);
+            width: 100%;
+            padding: 1.2rem;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .search-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 5rem 0;
+            background: var(--gray-light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3.5rem;
+            color: var(--dark-blue);
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .feature-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            background: var(--light-blue);
+            color: var(--primary-blue);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover .feature-icon {
+            background: var(--gradient);
+            color: var(--white);
+            transform: scale(1.1);
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: var(--dark-blue);
+            font-size: 1.3rem;
+        }
+        
+        /* Popular Destinations */
+        .destinations {
+            padding: 5rem 0;
+        }
+        
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .destination-card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
+            height: 320px;
+            transition: all 0.3s ease;
+        }
+        
+        .destination-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .destination-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .destination-card:hover img {
+            transform: scale(1.1);
+        }
+        
+        .destination-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: var(--white);
+            padding: 1.8rem;
+        }
+        
+        .destination-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Special Offers */
+        .offers {
+            padding: 5rem 0;
+            background: var(--gray-light);
+        }
+        
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .offer-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+        
+        .offer-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .offer-image {
+            height: 220px;
+            overflow: hidden;
+        }
+        
+        .offer-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .offer-card:hover .offer-image img {
+            transform: scale(1.1);
+        }
+        
+        .offer-content {
+            padding: 1.8rem;
+        }
+        
+        .offer-tag {
+            background: var(--gradient);
+            color: var(--white);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .offer-content h3 {
+            margin-bottom: 0.8rem;
+            color: var(--dark-blue);
+            font-size: 1.3rem;
+        }
+        
+        .offer-price {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .current-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+        
+        .original-price {
+            text-decoration: line-through;
+            color: var(--gray);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-blue);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--accent-blue);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column a:hover {
+            color: var(--white);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--accent-blue);
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            background: var(--white);
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            animation: modalAppear 0.3s ease;
+        }
+        
+        @keyframes modalAppear {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1.2rem;
+            right: 1.5rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+            transition: color 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            color: var(--primary-blue);
+        }
+        
+        .modal-title {
+            margin-bottom: 1.5rem;
+            color: var(--dark-blue);
+            text-align: center;
+            font-size: 1.8rem;
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+        }
+        
+        /* Search Results */
+        .search-results {
+            padding: 4rem 0;
+        }
+        
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .results-count {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+        
+        .sort-options select {
+            padding: 0.6rem 1rem;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+            background: var(--white);
+            color: var(--gray);
+        }
+        
+        .hotel-card {
+            display: flex;
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .hotel-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .hotel-image {
+            width: 300px;
+            height: 250px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .hotel-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .hotel-card:hover .hotel-image img {
+            transform: scale(1.05);
+        }
+        
+        .hotel-details {
+            flex: 1;
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .hotel-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-blue);
+        }
+        
+        .hotel-location {
+            color: var(--gray);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .hotel-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .rating-stars {
+            color: #ffc107;
+            font-size: 1.1rem;
+        }
+        
+        .rating-value {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 0.3rem 0.6rem;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+        
+        .hotel-price {
+            text-align: right;
+        }
+        
+        .price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+        
+        .price-note {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* User Dashboard */
+        .dashboard {
+            padding: 4rem 0;
+        }
+        
+        .dashboard-header {
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+        
+        .dashboard-tabs {
+            display: flex;
+            border-bottom: 1px solid #e0e0e0;
+            margin-bottom: 2.5rem;
+            justify-content: center;
+        }
+        
+        .tab {
+            padding: 1.2rem 2.5rem;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .tab.active {
+            border-bottom: 3px solid var(--primary-blue);
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+        
+        .tab:hover:not(.active) {
+            color: var(--primary-blue);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .booking-item {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.8rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .booking-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .booking-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        
+        .booking-status {
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .status-confirmed {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+        
+        .status-pending {
+            background: #fff3e0;
+            color: #ef6c00;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+            
+            nav ul {
+                gap: 1.2rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .hotel-card {
+                flex-direction: column;
+            }
+            
+            .hotel-image {
+                width: 100%;
+                height: 200px;
+            }
+            
+            .dashboard-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tab {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-hotel"></i>
+                    <span>BlueSky Hotels</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#" class="nav-link" data-page="home">หน้าแรก</a></li>
+                        <li><a href="#" class="nav-link" data-page="search">ค้นหาโรงแรม</a></li>
+                        <li><a href="#" class="nav-link" data-page="offers">ข้อเสนอพิเศษ</a></li>
+                        <li><a href="#" class="nav-link" data-page="destinations">จุดหมายปลายทาง</a></li>
+                    </ul>
+                </nav>
+                <div class="auth-buttons" id="auth-buttons">
+                    <button class="btn btn-outline" id="login-btn">เข้าสู่ระบบ</button>
+                    <button class="btn btn-primary" id="register-btn">สมัครสมาชิก</button>
+                </div>
+                <div class="user-menu" id="user-menu" style="display: none;">
+                    <span id="user-name"></span>
+                    <button class="btn btn-outline" id="dashboard-btn">แดชบอร์ด</button>
+                    <button class="btn btn-primary" id="logout-btn">ออกจากระบบ</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <section id="home-page" class="page active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>ค้นหาโรงแรมที่ดีที่สุดสำหรับคุณ</h1>
+                    <p>เปรียบเทียบราคาจากโรงแรมมากกว่า 1,000,000 แห่งทั่วโลก</p>
+                    
+                    <!-- Search Form -->
+                    <div class="search-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="destination">จุดหมายปลายทาง</label>
+                                <input type="text" id="destination" class="form-control" placeholder="เมือง, โรงแรม, หรือสถานที่ท่องเที่ยว">
+                            </div>
+                            <div class="form-group">
+                                <label for="check-in">เช็คอิน</label>
+                                <input type="date" id="check-in" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="check-out">เช็คเอาต์</label>
+                                <input type="date" id="check-out" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="rooms">ห้อง</label>
+                                <select id="rooms" class="form-control">
+                                    <option value="1">1 ห้อง</option>
+                                    <option value="2">2 ห้อง</option>
+                                    <option value="3">3 ห้อง</option>
+                                    <option value="4">4+ ห้อง</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="adults">ผู้ใหญ่</label>
+                                <select id="adults" class="form-control">
+                                    <option value="1">1 ผู้ใหญ่</option>
+                                    <option value="2">2 ผู้ใหญ่</option>
+                                    <option value="3">3 ผู้ใหญ่</option>
+                                    <option value="4">4+ ผู้ใหญ่</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="children">เด็ก</label>
+                                <select id="children" class="form-control">
+                                    <option value="0">0 เด็ก</option>
+                                    <option value="1">1 เด็ก</option>
+                                    <option value="2">2 เด็ก</option>
+                                    <option value="3">3+ เด็ก</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button class="btn search-btn" id="search-hotels">ค้นหาโรงแรม</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <div class="section-title">
+                    <h2>ทำไมต้องเลือกเรา?</h2>
+                    <p>เรามอบประสบการณ์การจองโรงแรมที่ดีที่สุดสำหรับคุณ</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-tag"></i>
+                        </div>
+                        <h3>ราคาพิเศษ</h3>
+                        <p>รับส่วนลดสูงสุด 80% สำหรับโรงแรมกว่า 1,000,000 แห่งทั่วโลก</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>ปลอดภัย 100%</h3>
+                        <p>การจองของคุณปลอดภัยด้วยระบบรักษาความปลอดภัยระดับสูง</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3>บริการ 24/7</h3>
+                        <p>ทีมงานพร้อมให้บริการคุณตลอด 24 ชั่วโมงทุกวัน</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3>รีวิวจริง</h3>
+                        <p>อ่านรีวิวจากผู้ใช้จริงก่อนตัดสินใจจอง</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Popular Destinations -->
+        <section class="destinations">
+            <div class="container">
+                <div class="section-title">
+                    <h2>จุดหมายปลายทางยอดนิยม</h2>
+                    <p>ค้นพบสถานที่ท่องเที่ยวยอดนิยมจากทั่วโลก</p>
+                </div>
+                <div class="destinations-grid">
+                    <div class="destination-card">
+                        <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="กรุงเทพ">
+                        <div class="destination-info">
+                            <h3>กรุงเทพ</h3>
+                            <p>ประเทศไทย</p>
+                        </div>
+                    </div>
+                    <div class="destination-card">
+                        <img src="https://images.unsplash.com/photo-1534008897995-27a23e859048?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1474&q=80" alt="พัทยา">
+                        <div class="destination-info">
+                            <h3>พัทยา</h3>
+                            <p>ประเทศไทย</p>
+                        </div>
+                    </div>
+                    <div class="destination-card">
+                        <img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1464&q=80" alt="ภูเก็ต">
+                        <div class="destination-info">
+                            <h3>ภูเก็ต</h3>
+                            <p>ประเทศไทย</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Special Offers -->
+        <section class="offers">
+            <div class="container">
+                <div class="section-title">
+                    <h2>ข้อเสนอพิเศษ</h2>
+                    <p>ส่วนลดและข้อเสนอพิเศษสำหรับคุณ</p>
+                </div>
+                <div class="offers-grid" id="special-offers">
+                    <!-- Special offers will be loaded here -->
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Search Results Page -->
+    <section id="search-page" class="page" style="display: none;">
+        <div class="container">
+            <div class="search-results">
+                <div class="results-header">
+                    <h2>ผลการค้นหา</h2>
+                    <div class="results-count" id="results-count">พบ 0 โรงแรม</div>
+                    <div class="sort-options">
+                        <select id="sort-results">
+                            <option value="price-asc">ราคาต่ำไปสูง</option>
+                            <option value="price-desc">ราคาสูงไปต่ำ</option>
+                            <option value="rating">เรียงตามคะแนน</option>
+                            <option value="name">เรียงตามชื่อ</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="hotels-list">
+                    <!-- Hotel results will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hotel Details Page -->
+    <section id="hotel-page" class="page" style="display: none;">
+        <div class="container">
+            <div id="hotel-details">
+                <!-- Hotel details will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Page -->
+    <section id="booking-page" class="page" style="display: none;">
+        <div class="container">
+            <div id="booking-details">
+                <!-- Booking form will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- User Dashboard -->
+    <section id="dashboard-page" class="page" style="display: none;">
+        <div class="container">
+            <div class="dashboard">
+                <div class="dashboard-header">
+                    <h2>แดชบอร์ดของฉัน</h2>
+                    <p>จัดการการจองและข้อมูลส่วนตัวของคุณ</p>
+                </div>
+                
+                <div class="dashboard-tabs">
+                    <div class="tab active" data-tab="bookings">การจองของฉัน</div>
+                    <div class="tab" data-tab="profile">ข้อมูลส่วนตัว</div>
+                    <div class="tab" data-tab="favorites">โรงแรมที่ชอบ</div>
+                </div>
+                
+                <div class="tab-content active" id="bookings-tab">
+                    <h3>การจองล่าสุด</h3>
+                    <div id="user-bookings">
+                        <!-- User bookings will be loaded here -->
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="profile-tab">
+                    <h3>ข้อมูลส่วนตัว</h3>
+                    <div class="search-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="profile-firstname">ชื่อ</label>
+                                <input type="text" id="profile-firstname" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="profile-lastname">นามสกุล</label>
+                                <input type="text" id="profile-lastname" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="profile-email">อีเมล</label>
+                                <input type="email" id="profile-email" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="profile-phone">โทรศัพท์</label>
+                                <input type="tel" id="profile-phone" class="form-control">
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" id="update-profile">อัพเดทข้อมูล</button>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="favorites-tab">
+                    <h3>โรงแรมที่ชอบ</h3>
+                    <div id="user-favorites">
+                        <!-- User favorites will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>เกี่ยวกับเรา</h3>
+                    <ul>
+                        <li><a href="#">เกี่ยวกับบริษัท</a></li>
+                        <li><a href="#">อาชีพ</a></li>
+                        <li><a href="#">ข่าวสาร</a></li>
+                        <li><a href="#">นโยบายความเป็นส่วนตัว</a></li>
+                        <li><a href="#">ข้อกำหนดและเงื่อนไข</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>บริการ</h3>
+                    <ul>
+                        <li><a href="#">จองโรงแรม</a></li>
+                        <li><a href="#">จองเที่ยวบิน</a></li>
+                        <li><a href="#">แพ็คเกจทัวร์</a></li>
+                        <li><a href="#">รถเช่า</a></li>
+                        <li><a href="#">กิจกรรม</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>จุดหมายปลายทาง</h3>
+                    <ul>
+                        <li><a href="#">กรุงเทพ</a></li>
+                        <li><a href="#">พัทยา</a></li>
+                        <li><a href="#">ภูเก็ต</a></li>
+                        <li><a href="#">เชียงใหม่</a></li>
+                        <li><a href="#">เกาะสมุย</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>ติดต่อเรา</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> 02-123-4567</li>
+                        <li><i class="fas fa-envelope"></i> support@blueskyhotels.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 ถนนสุขุมวิท กรุงเทพ</li>
+                    </ul>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-line"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 BlueSky Hotels. สงวนลิขสิทธิ์ทุกประการ</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-login">&times;</span>
+            <h2 class="modal-title">เข้าสู่ระบบ</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email">อีเมล</label>
+                    <input type="email" id="login-email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">รหัสผ่าน</label>
+                    <input type="password" id="login-password" class="form-control" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline" id="close-login-btn">ปิด</button>
+                    <button type="submit" class="btn btn-primary">เข้าสู่ระบบ</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal" id="register-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-register">&times;</span>
+            <h2 class="modal-title">สมัครสมาชิก</h2>
+            <form id="register-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="register-firstname">ชื่อ</label>
+                        <input type="text" id="register-firstname" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-lastname">นามสกุล</label>
+                        <input type="text" id="register-lastname" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="register-email">อีเมล</label>
+                    <input type="email" id="register-email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-phone">โทรศัพท์</label>
+                    <input type="tel" id="register-phone" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-password">รหัสผ่าน</label>
+                    <input type="password" id="register-password" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-confirm-password">ยืนยันรหัสผ่าน</label>
+                    <input type="password" id="register-confirm-password" class="form-control" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline" id="close-register-btn">ปิด</button>
+                    <button type="submit" class="btn btn-primary">สมัครสมาชิก</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // ข้อมูลโรงแรมทั่วประเทศไทย
+        const hotelsData = [
+            {
+                id: 1,
+                name: "โรงแรมแกรนด์ ไฮแอท เอราวัณ",
+                location: "กรุงเทพ",
+                address: "494 ถ. ราชดำริ แขวง ลุมพินี เขต ปทุมวัน กรุงเทพมหานคร 10330",
+                rating: 4.8,
+                price: 4500,
+                originalPrice: 5200,
+                image: "https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                description: "โรงแรมระดับ 5 ดาว ตั้งอยู่ใจกลางกรุงเทพ ใกล้สถานี BTS",
+                amenities: ["WiFi ฟรี", "สระว่ายน้ำ", "ฟิตเนส", "ร้านอาหาร", "ที่จอดรถ"]
+            },
+            {
+                id: 2,
+                name: "โรงแรมแมนดาริน โอเรียนเต็ล",
+                location: "กรุงเทพ",
+                address: "48 ถ. เจริญกรุง แขวง บางรัก เขต บางรัก กรุงเทพมหานคร 10500",
+                rating: 4.9,
+                price: 6800,
+                originalPrice: 7500,
+                image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                description: "โรงแรมหรูริมแม่น้ำเจ้าพระยา ให้บริการระดับโลก",
+                amenities: ["WiFi ฟรี", "สระว่ายน้ำ", "สปา", "ร้านอาหาร", "บริการเรือ"]
+            },
+            {
+                id: 3,
+                name: "ฮิลตัน พัทยา",
+                location: "พัทยา",
+                address: "333/101 หมู่ 9 ถ. เฉลิมพระเกียรติ ร.9 ต. หนองปรือ อ. บางละมุง ชลบุรี 20150",
+                rating: 4.5,
+                price: 3200,
+                originalPrice: 3800,
+                image: "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                description: "โรงแรมระดับ 5 ดาว ตั้งอยู่ริมชายหาดพัทยา",
+                amenities: ["WiFi ฟรี", "สระว่ายน้ำ", "ฟิตเนส", "ร้านอาหาร", "ชายหาดส่วนตัว"]
+            },
+            {
+                id: 4,
+                name: "โรงแรม JW Marriott ภูเก็ต",
+                location: "ภูเก็ต",
+                address: "231 หมู่ 6 ต. กะทู้ อ. กะทู้ ภูเก็ต 83120",
+                rating: 4.7,
+                price: 5200,
+                originalPrice: 5900,
+                image: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                description: "รีสอร์ทระดับ 5 ดาว ตั้งอยู่ริมชายหาดที่สวยงาม",
+                amenities: ["WiFi ฟรี", "สระว่ายน้ำ", "สปา", "ร้านอาหาร", "ชายหาดส่วนตัว"]
+            },
+            {
+                id: 5,
+                name: "โรงแรมดุสิต กรุงเทพ",
+                location: "กรุงเทพ",
+                address: "946 ถ. พระราม 4 แขวง คลองเตย เขต คลองเตย กรุงเทพมหานคร 10110",
+                rating: 4.6,
+                price: 3800,
+                originalPrice: 4500,
+                image: "https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80",
+                description: "โรงแรมระดับ 5 ดาว ตั้งอยู่ใกล้ศูนย์การค้าและสถานี BTS",
+                amenities: ["WiFi ฟรี", "สระว่ายน้ำ", "ฟิตเนส", "ร้านอาหาร", "ที่จอดรถ"]
+            },
+            {
+                id: 6,
+                name: "โรงแรมเชอราตัน กรานด์ สุขุมวิท",
+                location: "กรุงเทพ",
+                address: "250 ถ. สุขุมวิท แขวง คลองเตย เขต คลองเตย กรุงเทพมหานคร 10110",
+                rating: 4.4,
+                price: 2900,
+                originalPrice: 3500,
+                image: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                description: "โรงแรมระดับ 5 ดาว ตั้งอยู่บนถนนสุขุมวิท",
+                amenities: ["WiFi ฟรี", "สระว่ายน้ำ", "ฟิตเนส", "ร้านอาหาร", "ที่จอดรถ"]
+            }
+        ];
+
+        // ข้อมูลผู้ใช้และระบบ
+        let currentUser = null;
+        let userBookings = [];
+        let userFavorites = [];
+
+        // DOM Elements
+        const pages = document.querySelectorAll('.page');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const authButtons = document.getElementById('auth-buttons');
+        const userMenu = document.getElementById('user-menu');
+        const userName = document.getElementById('user-name');
+        const loginBtn = document.getElementById('login-btn');
+        const registerBtn = document.getElementById('register-btn');
+        const logoutBtn = document.getElementById('logout-btn');
+        const dashboardBtn = document.getElementById('dashboard-btn');
+        const loginModal = document.getElementById('login-modal');
+        const registerModal = document.getElementById('register-modal');
+        const closeLogin = document.getElementById('close-login');
+        const closeRegister = document.getElementById('close-register');
+        const closeLoginBtn = document.getElementById('close-login-btn');
+        const closeRegisterBtn = document.getElementById('close-register-btn');
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+        const searchHotelsBtn = document.getElementById('search-hotels');
+        const hotelsList = document.getElementById('hotels-list');
+        const resultsCount = document.getElementById('results-count');
+        const sortResults = document.getElementById('sort-results');
+        const specialOffers = document.getElementById('special-offers');
+
+        // ฟังก์ชันเริ่มต้น
+        document.addEventListener('DOMContentLoaded', function() {
+            // ตั้งค่าวันเช็คอินเป็นวันพรุ่งนี้
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            document.getElementById('check-in').valueAsDate = new Date();
+            document.getElementById('check-out').valueAsDate = tomorrow;
+            
+            // โหลดข้อเสนอพิเศษ
+            loadSpecialOffers();
+            
+            // ตรวจสอบสถานะการเข้าสู่ระบบ
+            checkLoginStatus();
+            
+            // เพิ่ม Event Listeners
+            setupEventListeners();
+        });
+
+        // ตั้งค่า Event Listeners
+        function setupEventListeners() {
+            // Navigation
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const page = this.getAttribute('data-page');
+                    showPage(page);
+                });
+            });
+
+            // Authentication
+            loginBtn.addEventListener('click', () => loginModal.style.display = 'flex');
+            registerBtn.addEventListener('click', () => registerModal.style.display = 'flex');
+            logoutBtn.addEventListener('click', logout);
+            dashboardBtn.addEventListener('click', () => showPage('dashboard'));
+
+            // Modal Close
+            closeLogin.addEventListener('click', () => loginModal.style.display = 'none');
+            closeRegister.addEventListener('click', () => registerModal.style.display = 'none');
+            closeLoginBtn.addEventListener('click', () => loginModal.style.display = 'none');
+            closeRegisterBtn.addEventListener('click', () => registerModal.style.display = 'none');
+
+            // Forms
+            loginForm.addEventListener('submit', handleLogin);
+            registerForm.addEventListener('submit', handleRegister);
+
+            // Search
+            searchHotelsBtn.addEventListener('click', handleSearch);
+            sortResults.addEventListener('change', handleSort);
+
+            // Dashboard Tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    switchTab(tabId);
+                });
+            });
+
+            // Close modal when clicking outside
+            window.addEventListener('click', function(e) {
+                if (e.target === loginModal) {
+                    loginModal.style.display = 'none';
+                }
+                if (e.target === registerModal) {
+                    registerModal.style.display = 'none';
+                }
+            });
+        }
+
+        // ฟังก์ชันแสดงหน้า
+        function showPage(pageName) {
+            pages.forEach(page => {
+                page.style.display = 'none';
+            });
+            
+            document.getElementById(`${pageName}-page`).style.display = 'block';
+            
+            // ถ้าเป็นหน้าแดชบอร์ดและผู้ใช้ยังไม่ได้ล็อกอิน ให้แสดงหน้าเข้าสู่ระบบ
+            if (pageName === 'dashboard' && !currentUser) {
+                loginModal.style.display = 'flex';
+                showPage('home');
+            }
+        }
+
+        // ฟังก์ชันตรวจสอบสถานะการเข้าสู่ระบบ
+        function checkLoginStatus() {
+            const savedUser = localStorage.getItem('currentUser');
+            if (savedUser) {
+                currentUser = JSON.parse(savedUser);
+                updateUIForLoggedInUser();
+            }
+        }
+
+        // ฟังก์ชันอัพเดท UI สำหรับผู้ใช้ที่ล็อกอินแล้ว
+        function updateUIForLoggedInUser() {
+            authButtons.style.display = 'none';
+            userMenu.style.display = 'flex';
+            userName.textContent = currentUser.firstname;
+            
+            // โหลดข้อมูลการจองและรายการโปรด
+            const savedBookings = localStorage.getItem(`bookings_${currentUser.email}`);
+            const savedFavorites = localStorage.getItem(`favorites_${currentUser.email}`);
+            
+            if (savedBookings) {
+                userBookings = JSON.parse(savedBookings);
+            }
+            
+            if (savedFavorites) {
+                userFavorites = JSON.parse(savedFavorites);
+            }
+        }
+
+        // ฟังก์ชันจัดการการเข้าสู่ระบบ
+        function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            
+            // ตรวจสอบข้อมูลจาก localStorage
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            const user = users.find(u => u.email === email && u.password === password);
+            
+            if (user) {
+                currentUser = user;
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                updateUIForLoggedInUser();
+                loginModal.style.display = 'none';
+                alert('เข้าสู่ระบบสำเร็จ!');
+            } else {
+                alert('อีเมลหรือรหัสผ่านไม่ถูกต้อง');
+            }
+        }
+
+        // ฟังก์ชันจัดการการสมัครสมาชิก
+        function handleRegister(e) {
+            e.preventDefault();
+            const firstname = document.getElementById('register-firstname').value;
+            const lastname = document.getElementById('register-lastname').value;
+            const email = document.getElementById('register-email').value;
+            const phone = document.getElementById('register-phone').value;
+            const password = document.getElementById('register-password').value;
+            const confirmPassword = document.getElementById('register-confirm-password').value;
+            
+            if (password !== confirmPassword) {
+                alert('รหัสผ่านไม่ตรงกัน');
+                return;
+            }
+            
+            // ตรวจสอบว่ามีผู้ใช้แล้วหรือไม่
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            const existingUser = users.find(u => u.email === email);
+            
+            if (existingUser) {
+                alert('มีผู้ใช้ด้วยอีเมลนี้แล้ว');
+                return;
+            }
+            
+            // บันทึกผู้ใช้ใหม่
+            const newUser = { firstname, lastname, email, phone, password };
+            users.push(newUser);
+            localStorage.setItem('users', JSON.stringify(users));
+            
+            alert('สมัครสมาชิกสำเร็จ! กรุณาเข้าสู่ระบบ');
+            registerModal.style.display = 'none';
+            registerForm.reset();
+        }
+
+        // ฟังก์ชันออกจากระบบ
+        function logout() {
+            currentUser = null;
+            localStorage.removeItem('currentUser');
+            authButtons.style.display = 'flex';
+            userMenu.style.display = 'none';
+            showPage('home');
+            alert('ออกจากระบบสำเร็จ');
+        }
+
+        // ฟังก์ชันโหลดข้อเสนอพิเศษ
+        function loadSpecialOffers() {
+            const specialHotels = hotelsData.filter(hotel => hotel.originalPrice > hotel.price);
+            
+            specialOffers.innerHTML = specialHotels.map(hotel => `
+                <div class="offer-card" data-hotel-id="${hotel.id}">
+                    <div class="offer-image">
+                        <img src="${hotel.image}" alt="${hotel.name}">
+                    </div>
+                    <div class="offer-content">
+                        <span class="offer-tag">ส่วนลด ${Math.round((1 - hotel.price/hotel.originalPrice) * 100)}%</span>
+                        <h3>${hotel.name}</h3>
+                        <p>${hotel.location}, ประเทศไทย</p>
+                        <div class="offer-price">
+                            <span class="current-price">${hotel.price.toLocaleString()} ฿</span>
+                            <span class="original-price">${hotel.originalPrice.toLocaleString()} ฿</span>
+                        </div>
+                        <button class="btn btn-primary view-hotel" data-hotel-id="${hotel.id}">ดูรายละเอียด</button>
+                    </div>
+                </div>
+            `).join('');
+            
+            // เพิ่ม Event Listeners สำหรับปุ่มดูรายละเอียด
+            document.querySelectorAll('.view-hotel').forEach(button => {
+                button.addEventListener('click', function() {
+                    const hotelId = this.getAttribute('data-hotel-id');
+                    showHotelDetails(hotelId);
+                });
+            });
+        }
+
+        // ฟังก์ชันจัดการการค้นหา
+        function handleSearch() {
+            const destination = document.getElementById('destination').value.toLowerCase();
+            const checkIn = document.getElementById('check-in').value;
+            const checkOut = document.getElementById('check-out').value;
+            const rooms = document.getElementById('rooms').value;
+            const adults = document.getElementById('adults').value;
+            const children = document.getElementById('children').value;
+            
+            // กรองโรงแรมตามจุดหมายปลายทาง
+            let filteredHotels = hotelsData;
+            
+            if (destination) {
+                filteredHotels = hotelsData.filter(hotel => 
+                    hotel.location.toLowerCase().includes(destination) || 
+                    hotel.name.toLowerCase().includes(destination)
+                );
+            }
+            
+            // แสดงผลการค้นหา
+            displaySearchResults(filteredHotels);
+            
+            // แสดงหน้าผลการค้นหา
+            showPage('search');
+        }
+
+        // ฟังก์ชันแสดงผลการค้นหา
+        function displaySearchResults(hotels) {
+            resultsCount.textContent = `พบ ${hotels.length} โรงแรม`;
+            
+            hotelsList.innerHTML = hotels.map(hotel => `
+                <div class="hotel-card" data-hotel-id="${hotel.id}">
+                    <div class="hotel-image">
+                        <img src="${hotel.image}" alt="${hotel.name}">
+                    </div>
+                    <div class="hotel-details">
+                        <div>
+                            <h3 class="hotel-name">${hotel.name}</h3>
+                            <div class="hotel-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                ${hotel.location}, ประเทศไทย
+                            </div>
+                            <div class="hotel-rating">
+                                <div class="rating-stars">
+                                    ${'★'.repeat(Math.floor(hotel.rating))}${hotel.rating % 1 !== 0 ? '½' : ''}${'☆'.repeat(5 - Math.ceil(hotel.rating))}
+                                </div>
+                                <span class="rating-value">${hotel.rating}</span>
+                            </div>
+                            <div class="hotel-amenities">
+                                ${hotel.amenities.slice(0, 3).map(amenity => `<span>${amenity}</span>`).join(' • ')}
+                            </div>
+                        </div>
+                        <div class="hotel-price">
+                            <div class="price">${hotel.price.toLocaleString()} ฿</div>
+                            <div class="price-note">ต่อคืน</div>
+                            <button class="btn btn-primary view-hotel-btn" data-hotel-id="${hotel.id}">ดูรายละเอียด</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            
+            // เพิ่ม Event Listeners สำหรับปุ่มดูรายละเอียด
+            document.querySelectorAll('.view-hotel-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const hotelId = this.getAttribute('data-hotel-id');
+                    showHotelDetails(hotelId);
+                });
+            });
+        }
+
+        // ฟังก์ชันจัดการการเรียงลำดับ
+        function handleSort() {
+            const sortBy = sortResults.value;
+            const currentHotels = Array.from(document.querySelectorAll('.hotel-card'));
+            
+            let sortedHotels;
+            
+            switch(sortBy) {
+                case 'price-asc':
+                    sortedHotels = currentHotels.sort((a, b) => {
+                        const priceA = parseInt(a.querySelector('.price').textContent.replace(/,/g, ''));
+                        const priceB = parseInt(b.querySelector('.price').textContent.replace(/,/g, ''));
+                        return priceA - priceB;
+                    });
+                    break;
+                case 'price-desc':
+                    sortedHotels = currentHotels.sort((a, b) => {
+                        const priceA = parseInt(a.querySelector('.price').textContent.replace(/,/g, ''));
+                        const priceB = parseInt(b.querySelector('.price').textContent.replace(/,/g, ''));
+                        return priceB - priceA;
+                    });
+                    break;
+                case 'rating':
+                    sortedHotels = currentHotels.sort((a, b) => {
+                        const ratingA = parseFloat(a.querySelector('.rating-value').textContent);
+                        const ratingB = parseFloat(b.querySelector('.rating-value').textContent);
+                        return ratingB - ratingA;
+                    });
+                    break;
+                case 'name':
+                    sortedHotels = currentHotels.sort((a, b) => {
+                        const nameA = a.querySelector('.hotel-name').textContent;
+                        const nameB = b.querySelector('.hotel-name').textContent;
+                        return nameA.localeCompare(nameB, 'th');
+                    });
+                    break;
+                default:
+                    sortedHotels = currentHotels;
+            }
+            
+            // อัพเดท DOM ด้วยผลลัพธ์ที่เรียงแล้ว
+            hotelsList.innerHTML = '';
+            sortedHotels.forEach(hotel => hotelsList.appendChild(hotel));
+        }
+
+        // ฟังก์ชันแสดงรายละเอียดโรงแรม
+        function showHotelDetails(hotelId) {
+            const hotel = hotelsData.find(h => h.id == hotelId);
+            
+            if (!hotel) return;
+            
+            const hotelPage = document.getElementById('hotel-page');
+            hotelPage.innerHTML = `
+                <div class="hotel-details">
+                    <button class="btn btn-outline" id="back-to-search">← กลับไปผลการค้นหา</button>
+                    <div class="hotel-card" style="margin-top: 2rem;">
+                        <div class="hotel-image">
+                            <img src="${hotel.image}" alt="${hotel.name}">
+                        </div>
+                        <div class="hotel-details">
+                            <div>
+                                <h1 class="hotel-name">${hotel.name}</h1>
+                                <div class="hotel-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    ${hotel.address}
+                                </div>
+                                <div class="hotel-rating">
+                                    <div class="rating-stars">
+                                        ${'★'.repeat(Math.floor(hotel.rating))}${hotel.rating % 1 !== 0 ? '½' : ''}${'☆'.repeat(5 - Math.ceil(hotel.rating))}
+                                    </div>
+                                    <span class="rating-value">${hotel.rating}</span>
+                                </div>
+                                <p>${hotel.description}</p>
+                                <h3 style="margin-top: 1.5rem;">สิ่งอำนวยความสะดวก</h3>
+                                <div class="amenities-list">
+                                    ${hotel.amenities.map(amenity => `<span><i class="fas fa-check"></i> ${amenity}</span>`).join('')}
+                                </div>
+                            </div>
+                            <div class="hotel-price">
+                                <div class="price">${hotel.price.toLocaleString()} ฿</div>
+                                <div class="price-note">ต่อคืน</div>
+                                <button class="btn btn-primary" id="book-now-btn" data-hotel-id="${hotel.id}">จองตอนนี้</button>
+                                <button class="btn btn-outline" id="add-to-favorites" data-hotel-id="${hotel.id}">เพิ่มในรายการโปรด</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // เพิ่ม Event Listeners
+            document.getElementById('back-to-search').addEventListener('click', () => showPage('search'));
+            document.getElementById('book-now-btn').addEventListener('click', function() {
+                if (!currentUser) {
+                    alert('กรุณาเข้าสู่ระบบก่อนทำการจอง');
+                    loginModal.style.display = 'flex';
+                    return;
+                }
+                showBookingForm(hotelId);
+            });
+            document.getElementById('add-to-favorites').addEventListener('click', function() {
+                if (!currentUser) {
+                    alert('กรุณาเข้าสู่ระบบก่อนเพิ่มในรายการโปรด');
+                    loginModal.style.display = 'flex';
+                    return;
+                }
+                addToFavorites(hotelId);
+            });
+            
+            showPage('hotel');
+        }
+
+        // ฟังก์ชันแสดงฟอร์มการจอง
+        function showBookingForm(hotelId) {
+            const hotel = hotelsData.find(h => h.id == hotelId);
+            
+            if (!hotel) return;
+            
+            const checkIn = document.getElementById('check-in').value;
+            const checkOut = document.getElementById('check-out').value;
+            const rooms = document.getElementById('rooms').value;
+            const adults = document.getElementById('adults').value;
+            const children = document.getElementById('children').value;
+            
+            // คำนวณจำนวนคืน
+            const checkInDate = new Date(checkIn);
+            const checkOutDate = new Date(checkOut);
+            const nights = Math.ceil((checkOutDate - checkInDate) / (1000 * 60 * 60 * 24));
+            
+            // คำนวณราคารวม
+            const totalPrice = hotel.price * nights * rooms;
+            
+            const bookingPage = document.getElementById('booking-page');
+            bookingPage.innerHTML = `
+                <div class="booking-details">
+                    <button class="btn btn-outline" id="back-to-hotel">← กลับไปโรงแรม</button>
+                    <h2 style="margin: 2rem 0;">การจองโรงแรม</h2>
+                    
+                    <div class="hotel-card" style="margin-bottom: 2rem;">
+                        <div class="hotel-image">
+                            <img src="${hotel.image}" alt="${hotel.name}">
+                        </div>
+                        <div class="hotel-details">
+                            <div>
+                                <h3 class="hotel-name">${hotel.name}</h3>
+                                <div class="hotel-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    ${hotel.address}
+                                </div>
+                            </div>
+                            <div class="hotel-price">
+                                <div class="price">${hotel.price.toLocaleString()} ฿</div>
+                                <div class="price-note">ต่อคืน</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="search-form">
+                        <h3>รายละเอียดการจอง</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="booking-checkin">เช็คอิน</label>
+                                <input type="date" id="booking-checkin" class="form-control" value="${checkIn}" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="booking-checkout">เช็คเอาต์</label>
+                                <input type="date" id="booking-checkout" class="form-control" value="${checkOut}" readonly>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="booking-rooms">ห้อง</label>
+                                <input type="text" id="booking-rooms" class="form-control" value="${rooms} ห้อง" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="booking-guests">ผู้เข้าพัก</label>
+                                <input type="text" id="booking-guests" class="form-control" value="${adults} ผู้ใหญ่, ${children} เด็ก" readonly>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="booking-firstname">ชื่อ</label>
+                                <input type="text" id="booking-firstname" class="form-control" value="${currentUser.firstname}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="booking-lastname">นามสกุล</label>
+                                <input type="text" id="booking-lastname" class="form-control" value="${currentUser.lastname}" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="booking-email">อีเมล</label>
+                                <input type="email" id="booking-email" class="form-control" value="${currentUser.email}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="booking-phone">โทรศัพท์</label>
+                                <input type="tel" id="booking-phone" class="form-control" value="${currentUser.phone}" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="booking-special">คำขอพิเศษ (ถ้ามี)</label>
+                                <textarea id="booking-special" class="form-control" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="search-form">
+                        <h3>สรุปการจอง</h3>
+                        <div class="summary-item">
+                            <span>${hotel.price.toLocaleString()} ฿ x ${nights} คืน x ${rooms} ห้อง</span>
+                            <span>${(hotel.price * nights * rooms).toLocaleString()} ฿</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>ภาษีและค่าบริการ</span>
+                            <span>${(totalPrice * 0.07).toLocaleString()} ฿</span>
+                        </div>
+                        <div class="summary-item" style="border-top: 1px solid #e0e0e0; padding-top: 1rem; margin-top: 1rem; font-weight: 700; font-size: 1.2rem;">
+                            <span>รวมทั้งสิ้น</span>
+                            <span>${(totalPrice * 1.07).toLocaleString()} ฿</span>
+                        </div>
+                        
+                        <button class="btn btn-primary" id="confirm-booking" style="width: 100%; margin-top: 1.5rem;">ยืนยันการจอง</button>
+                    </div>
+                </div>
+            `;
+            
+            // เพิ่ม Event Listeners
+            document.getElementById('back-to-hotel').addEventListener('click', () => showHotelDetails(hotelId));
+            document.getElementById('confirm-booking').addEventListener('click', () => confirmBooking(hotelId, nights, rooms, totalPrice * 1.07));
+            
+            showPage('booking');
+        }
+
+        // ฟังก์ชันยืนยันการจอง
+        function confirmBooking(hotelId, nights, rooms, totalPrice) {
+            const hotel = hotelsData.find(h => h.id == hotelId);
+            const checkIn = document.getElementById('booking-checkin').value;
+            const checkOut = document.getElementById('booking-checkout').value;
+            const specialRequests = document.getElementById('booking-special').value;
+            
+            const booking = {
+                id: Date.now(),
+                hotelId: hotelId,
+                hotelName: hotel.name,
+                checkIn: checkIn,
+                checkOut: checkOut,
+                nights: nights,
+                rooms: rooms,
+                totalPrice: totalPrice,
+                status: 'confirmed',
+                bookingDate: new Date().toISOString().split('T')[0],
+                specialRequests: specialRequests
+            };
+            
+            userBookings.push(booking);
+            localStorage.setItem(`bookings_${currentUser.email}`, JSON.stringify(userBookings));
+            
+            alert('การจองสำเร็จ! เราได้ส่งอีเมลยืนยันการจองให้คุณแล้ว');
+            showPage('dashboard');
+        }
+
+        // ฟังก์ชันเพิ่มในรายการโปรด
+        function addToFavorites(hotelId) {
+            if (userFavorites.includes(hotelId)) {
+                alert('โรงแรมนี้อยู่ในรายการโปรดของคุณแล้ว');
+                return;
+            }
+            
+            userFavorites.push(hotelId);
+            localStorage.setItem(`favorites_${currentUser.email}`, JSON.stringify(userFavorites));
+            alert('เพิ่มโรงแรมในรายการโปรดสำเร็จ!');
+        }
+
+        // ฟังก์ชันสลับแท็บในแดชบอร์ด
+        function switchTab(tabId) {
+            // อัพเดทแท็บที่ active
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelector(`.tab[data-tab="${tabId}"]`).classList.add('active');
+            
+            // อัพเดทเนื้อหาแท็บที่ active
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(`${tabId}-tab`).classList.add('active');
+            
+            // โหลดข้อมูลตามแท็บ
+            if (tabId === 'bookings') {
+                loadUserBookings();
+            } else if (tabId === 'favorites') {
+                loadUserFavorites();
+            } else if (tabId === 'profile') {
+                loadUserProfile();
+            }
+        }
+
+        // ฟังก์ชันโหลดการจองของผู้ใช้
+        function loadUserBookings() {
+            const userBookingsContainer = document.getElementById('user-bookings');
+            
+            if (userBookings.length === 0) {
+                userBookingsContainer.innerHTML = '<p>คุณยังไม่มีการจองใดๆ</p>';
+                return;
+            }
+            
+            userBookingsContainer.innerHTML = userBookings.map(booking => {
+                const hotel = hotelsData.find(h => h.id == booking.hotelId);
+                return `
+                    <div class="booking-item">
+                        <div class="booking-header">
+                            <h3>${hotel.name}</h3>
+                            <span class="booking-status status-${booking.status}">${booking.status === 'confirmed' ? 'ยืนยันแล้ว' : 'รอดำเนินการ'}</span>
+                        </div>
+                        <p><strong>วันที่เช็คอิน:</strong> ${booking.checkIn}</p>
+                        <p><strong>วันที่เช็คเอาต์:</strong> ${booking.checkOut}</p>
+                        <p><strong>จำนวนคืน:</strong> ${booking.nights} คืน</p>
+                        <p><strong>จำนวนห้อง:</strong> ${booking.rooms} ห้อง</p>
+                        <p><strong>ราคารวม:</strong> ${booking.totalPrice.toLocaleString()} ฿</p>
+                        ${booking.specialRequests ? `<p><strong>คำขอพิเศษ:</strong> ${booking.specialRequests}</p>` : ''}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // ฟังก์ชันโหลดรายการโปรดของผู้ใช้
+        function loadUserFavorites() {
+            const userFavoritesContainer = document.getElementById('user-favorites');
+            
+            if (userFavorites.length === 0) {
+                userFavoritesContainer.innerHTML = '<p>คุณยังไม่มีโรงแรมในรายการโปรด</p>';
+                return;
+            }
+            
+            const favoriteHotels = hotelsData.filter(hotel => userFavorites.includes(hotel.id));
+            
+            userFavoritesContainer.innerHTML = favoriteHotels.map(hotel => `
+                <div class="hotel-card">
+                    <div class="hotel-image">
+                        <img src="${hotel.image}" alt="${hotel.name}">
+                    </div>
+                    <div class="hotel-details">
+                        <div>
+                            <h3 class="hotel-name">${hotel.name}</h3>
+                            <div class="hotel-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                ${hotel.location}, ประเทศไทย
+                            </div>
+                            <div class="hotel-rating">
+                                <div class="rating-stars">
+                                    ${'★'.repeat(Math.floor(hotel.rating))}${hotel.rating % 1 !== 0 ? '½' : ''}${'☆'.repeat(5 - Math.ceil(hotel.rating))}
+                                </div>
+                                <span class="rating-value">${hotel.rating}</span>
+                            </div>
+                        </div>
+                        <div class="hotel-price">
+                            <div class="price">${hotel.price.toLocaleString()} ฿</div>
+                            <div class="price-note">ต่อคืน</div>
+                            <button class="btn btn-primary view-hotel-btn" data-hotel-id="${hotel.id}">ดูรายละเอียด</button>
+                            <button class="btn btn-outline remove-favorite" data-hotel-id="${hotel.id}">ลบออก</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            
+            // เพิ่ม Event Listeners
+            document.querySelectorAll('.view-hotel-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const hotelId = this.getAttribute('data-hotel-id');
+                    showHotelDetails(hotelId);
+                });
+            });
+            
+            document.querySelectorAll('.remove-favorite').forEach(button => {
+                button.addEventListener('click', function() {
+                    const hotelId = this.getAttribute('data-hotel-id');
+                    removeFromFavorites(hotelId);
+                });
+            });
+        }
+
+        // ฟังก์ชันลบออกจากรายการโปรด
+        function removeFromFavorites(hotelId) {
+            userFavorites = userFavorites.filter(id => id != hotelId);
+            localStorage.setItem(`favorites_${currentUser.email}`, JSON.stringify(userFavorites));
+            loadUserFavorites();
+            alert('ลบโรงแรมออกจากรายการโปรดสำเร็จ');
+        }
+
+        // ฟังก์ชันโหลดข้อมูลโปรไฟล์ผู้ใช้
+        function loadUserProfile() {
+            document.getElementById('profile-firstname').value = currentUser.firstname;
+            document.getElementById('profile-lastname').value = currentUser.lastname;
+            document.getElementById('profile-email').value = currentUser.email;
+            document.getElementById('profile-phone').value = currentUser.phone;
+            
+            // เพิ่ม Event Listener สำหรับปุ่มอัพเดทโปรไฟล์
+            document.getElementById('update-profile').addEventListener('click', updateUserProfile);
+        }
+
+        // ฟังก์ชันอัพเดทโปรไฟล์ผู้ใช้
+        function updateUserProfile() {
+            const firstname = document.getElementById('profile-firstname').value;
+            const lastname = document.getElementById('profile-lastname').value;
+            const email = document.getElementById('profile-email').value;
+            const phone = document.getElementById('profile-phone').value;
+            
+            // อัพเดทข้อมูลผู้ใช้
+            currentUser.firstname = firstname;
+            currentUser.lastname = lastname;
+            currentUser.email = email;
+            currentUser.phone = phone;
+            
+            // อัพเดทใน localStorage
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            
+            // อัพเดทข้อมูลผู้ใช้ใน users array
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            const userIndex = users.findIndex(u => u.email === currentUser.email);
+            if (userIndex !== -1) {
+                users[userIndex] = currentUser;
+                localStorage.setItem('users', JSON.stringify(users));
+            }
+            
+            // อัพเดท UI
+            userName.textContent = currentUser.firstname;
+            
+            alert('อัพเดทข้อมูลส่วนตัวสำเร็จ!');
+        }
+    </script>
+</body>
+</html>
